@@ -2,9 +2,6 @@
  * add sounds
  */
 
-if (!localStorage.getItem("highScore")) localStorage.setItem("highScore", 0);
-document.getElementById("highScore").textContent = `High Score: ${localStorage.getItem("highScore")}`;
-
 // utility functions
 function getcssvar(varname) {
     return getComputedStyle(document.documentElement, null).getPropertyValue(`--${varname}`);
@@ -37,6 +34,7 @@ let gameOn = false; // true iff a game is in progress
 let attempt; // player's partial answer
 let index; // counts how many buttons pushed so far in a given attempt
 let pattern; // correct answer
+let highScore = 0;
 
 // initialize colored game buttons
 const colors = ["green", "red", "yellow", "blue"];
@@ -81,8 +79,8 @@ function advanceGame() {
 function gameOver(n = 3) {
     if (n === 0) {
         gameOn = false;
-        localStorage.setItem("highScore", pattern.length - 1);
-        document.getElementById("highScore").textContent = `High Score: ${localStorage.getItem("highScore")}`;
+        highScore = Math.max(highScore, pattern.length - 1);
+        document.getElementById("highScore").textContent = `High Score: ${highScore}`;
         return;
     }
     for (let color of ["green", "red", "yellow"]) {
