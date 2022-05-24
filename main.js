@@ -12,7 +12,6 @@ function blink(color, time, callback) {
 }
 
 function play(pattern) {
-    console.log(pattern);
     if (pattern.length === 0) {
         return;
     } else {
