@@ -17,12 +17,19 @@ function play(pattern) {
     } else {
         let [head, ...tail] = pattern;
         setTimeout(() => {
-            if (soundOn) buttonSounds[head].play();
+            playSound(buttonSounds[head]);
             blink(head, 500, () => {
                 play(tail);
             });
-        }, 110);
+        }, 100);
     }
+}
+
+function playSound(audioElt) {
+    if (!soundOn) return;
+    audioElt.pause();
+    audioElt.currentTime = 0;
+    audioElt.play();
 }
 
 // load sounds
@@ -59,7 +66,7 @@ for (let color of colors) {
             if (attempt[index] !== pattern[index]) {
                 gameOver();
             } else {
-                if (soundOn) buttonSounds[color].play();
+                playSound(buttonSounds[color]);
                 if (attempt.length === pattern.length) {
                     setTimeout(() => { // add delay before next run
                         advanceGame();
@@ -69,7 +76,7 @@ for (let color of colors) {
                 }
             }
         } else {
-            if (soundOn) buttonSounds[color].play();
+            playSound(buttonSounds[color]);
         }
     });
 }
@@ -99,7 +106,7 @@ function gameOver(n = 3) {
         return;
     }
     if (n === 3) {
-        if (soundOn) gameOverSound.play();
+        playSound(gameOverSound);
     }
     for (let color of ["green", "red", "yellow"]) {
         blink(color, 100)
