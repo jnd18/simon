@@ -12,7 +12,7 @@
 #controls {
     display: grid;
     grid-template-columns: 80px 200px;
-    grid-template-rows: 100px 125px 125px 125px;
+    grid-template-rows: 100px 125px 125px 30px 30px;
     align-items: center;
     margin-top: 50px;
 }
@@ -40,6 +40,10 @@ p {
 }
 
 #highScore {
+    grid-column: 1 / span 2;
+}
+
+#lastScore {
     grid-column: 1 / span 2;
 }
 

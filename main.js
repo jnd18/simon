@@ -101,7 +101,9 @@ function advanceGame() {
 function gameOver(n = 3) {
     if (n === 0) {
         gameOn = false;
-        highScore = Math.max(highScore, pattern.length - 1);
+        lastScore = pattern.length - 1;
+        highScore = Math.max(highScore, lastScore);
+        document.getElementById("lastScore").textContent = `last score: ${lastScore}`;
         document.getElementById("highScore").textContent = `high score: ${highScore}`;
         return;
     }
