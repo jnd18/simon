@@ -1,0 +1,63 @@
+:root {
+    --dark-green: hsl(124, 60%, 40%);
+    --light-green: hsl(124, 100%, 50%);
+    --dark-red: hsl(0, 60%, 40%);
+    --light-red: hsl(0, 100%, 50%);
+    --dark-yellow: hsl(55, 60%, 40%);
+    --light-yellow: hsl(55, 100%, 50%);
+    --dark-blue: hsl(200, 40%, 40%);
+    --light-blue: hsl(200, 100%, 50%);
+    --button-size: 250px;
+}
+
+#controls {
+    display: grid;
+    grid-template-columns: calc(var(--button-size) / 2) calc(var(--button-size) / 2);
+    grid-template-rows: calc(var(--button-size) / 2);
+    column-gap: 50px;
+    margin: 50px;
+}
+
+#newGame {
+    width: calc(var(--button-size) / 2);
+    height: calc(var(--button-size) / 2);
+    font-size: 1.5em;
+}
+
+#highScore {
+    font-size: 1.5em;
+    font-family: sans-serif;
+}
+
+#gameGrid {
+    display: grid;
+    height: calc(var(--button-size) * 2);
+    grid-template-columns: var(--button-size) var(--button-size);
+    grid-template-rows: var(--button-size) var(--button-size);
+    margin: 50px;
+}
+
+.gameButton {
+    width: var(--button-size);
+    height: var(--button-size);
+}
+
+#greenButton {
+    background-color: var(--dark-green);
+    border-top-left-radius: var(--button-size);
+}
+
+#redButton {
+    background-color: var(--dark-red);
+    border-top-right-radius: var(--button-size);
+}
+
+#yellowButton {
+    background-color: var(--dark-yellow);
+    border-bottom-left-radius: var(--button-size);
+}
+
+#blueButton {
+    background-color: var(--dark-blue);
+    border-bottom-right-radius: var(--button-size);
+}
