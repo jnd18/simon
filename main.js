@@ -80,7 +80,7 @@ function gameOver(n = 3) {
     if (n === 0) {
         gameOn = false;
         highScore = Math.max(highScore, pattern.length - 1);
-        document.getElementById("highScore").textContent = `High Score: ${highScore}`;
+        document.getElementById("highScore").textContent = `high score: ${highScore}`;
         return;
     }
     for (let color of ["green", "red", "yellow"]) {

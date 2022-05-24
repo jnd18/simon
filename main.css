@@ -7,57 +7,81 @@
     --light-yellow: hsl(55, 100%, 50%);
     --dark-blue: hsl(200, 40%, 40%);
     --light-blue: hsl(200, 100%, 50%);
-    --button-size: 250px;
 }
 
 #controls {
     display: grid;
-    grid-template-columns: calc(var(--button-size) / 2) calc(var(--button-size) / 2);
-    grid-template-rows: calc(var(--button-size) / 2);
-    column-gap: 50px;
-    margin: 50px;
+    grid-template-columns: 80px 200px;
+    grid-template-rows: 100px 125px 125px 125px;
+    align-items: center;
+    margin-top: 50px;
 }
 
-#newGame {
-    width: calc(var(--button-size) / 2);
-    height: calc(var(--button-size) / 2);
-    font-size: 1.5em;
+.controlButton {
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    background-color: #fffdd0;
+    border: 2px solid black;
+}
+
+p {
+    font-size: 1.6em;
+    font-family: 'Righteous', sans-serif;
+    font-style: italic;
+    margin: 10px;
+    color: #FFFDD0;
+    -webkit-text-stroke: 2px black;
+}
+
+#simon {
+    font-size: 4.5em;
+    grid-column: 1 / span 2;
 }
 
 #highScore {
-    font-size: 1.5em;
-    font-family: sans-serif;
+    grid-column: 1 / span 2;
 }
 
 #gameGrid {
     display: grid;
-    height: calc(var(--button-size) * 2);
-    grid-template-columns: var(--button-size) var(--button-size);
-    grid-template-rows: var(--button-size) var(--button-size);
-    margin: 50px;
+    grid-template-columns: 585px 250px;
+    background-color: #543b27;
+    border-radius: 240px;
+    border: 2px solid black;
+    width: 875px;
+}
+
+#gameButtons {
+    display: grid;
+    height: 500px;
+    grid-template-columns: 250px 250px;
+    grid-template-rows: 250px 250px;
+    margin: 50px 0px 50px 50px;
 }
 
 .gameButton {
-    width: var(--button-size);
-    height: var(--button-size);
+    width: 250px;
+    height: 250px;
+    border: 10px solid #543b27;
 }
 
 #greenButton {
     background-color: var(--dark-green);
-    border-top-left-radius: var(--button-size);
+    border-top-left-radius: 250px;
 }
 
 #redButton {
     background-color: var(--dark-red);
-    border-top-right-radius: var(--button-size);
+    border-top-right-radius: 250px;
 }
 
 #yellowButton {
     background-color: var(--dark-yellow);
-    border-bottom-left-radius: var(--button-size);
+    border-bottom-left-radius: 250px;
 }
 
 #blueButton {
     background-color: var(--dark-blue);
-    border-bottom-right-radius: var(--button-size);
+    border-bottom-right-radius: 250px;
 }

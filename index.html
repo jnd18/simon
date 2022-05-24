@@ -2,19 +2,27 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Righteous">
         <title>Simon</title>
         <link href="main.css" rel="stylesheet">
     </head>
     <body>
-        <div id="controls">
-            <button id="newGame" type="button">New Game</button>
-            <p id="highScore">High Score: 0</p>
-        </div>
         <div id="gameGrid">
-            <button id="greenButton"  class="gameButton" type="button"></button>
-            <button id="redButton"    class="gameButton" type="button"></button>
-            <button id="yellowButton" class="gameButton" type="button"></button>
-            <button id="blueButton"   class="gameButton" type="button"></button>
+            <div id="gameButtons">
+                <button id="greenButton"  class="gameButton" type="button"></button>
+                <button id="redButton"    class="gameButton" type="button"></button>
+                <button id="yellowButton" class="gameButton" type="button"></button>
+                <button id="blueButton"   class="gameButton" type="button"></button>
+            </div>
+            <div id="controls">
+                <p id="simon">simon</p>
+                <button id="newGame" class="controlButton" type="button"></button>
+                <p>new game</p>
+                <button id="toggleSound" class="controlButton" type="button"></button>
+                <p>toggle sound</p>
+                <p id="highScore">high score: 0</p>
+            </div>
         </div>
         <script src="main.js"></script>
     </body>
