@@ -18,7 +18,7 @@ function play(pattern) {
     } else {
         let [head, ...tail] = pattern;
         setTimeout(() => {
-            buttonSounds[head].play();
+            if (soundOn) buttonSounds[head].play();
             blink(head, 500, () => {
                 play(tail);
             });
@@ -34,12 +34,18 @@ buttonSounds.yellow = new Audio("csharp.mp3");
 buttonSounds.blue   = new Audio("high_e.mp3");
 const gameOverSound = new Audio("low_a.mp3");
 
+// set up sound toggle button
+document.getElementById("toggleSound").addEventListener("click", event => {
+    soundOn = !soundOn;
+});
+
 // global state for the game
 let gameOn = false; // true iff a game is in progress
 let attempt; // player's partial answer
 let index; // counts how many buttons pushed so far in a given attempt
 let pattern; // correct answer
 let highScore = 0;
+let soundOn = true;
 
 // initialize colored game buttons
 const colors = ["green", "red", "yellow", "blue"];
@@ -54,7 +60,7 @@ for (let color of colors) {
             if (attempt[index] !== pattern[index]) {
                 gameOver();
             } else {
-                buttonSounds[color].play();
+                if (soundOn) buttonSounds[color].play();
                 if (attempt.length === pattern.length) {
                     setTimeout(() => { // add delay before next run
                         advanceGame();
@@ -64,7 +70,7 @@ for (let color of colors) {
                 }
             }
         } else {
-            buttonSounds[color].play();
+            if (soundOn) buttonSounds[color].play();
         }
     });
 }
@@ -94,7 +100,7 @@ function gameOver(n = 3) {
         return;
     }
     if (n === 3) {
-        gameOverSound.play();
+        if (soundOn) gameOverSound.play();
     }
     for (let color of ["green", "red", "yellow"]) {
         blink(color, 100)
