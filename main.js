@@ -22,7 +22,7 @@ function play(pattern) {
             blink(head, 500, () => {
                 play(tail);
             });
-        }, 100);
+        }, 110);
     }
 }
 
