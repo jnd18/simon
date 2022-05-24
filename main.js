@@ -1,7 +1,3 @@
-/* to do:
- * add sounds
- */
-
 // utility functions
 function getcssvar(varname) {
     return getComputedStyle(document.documentElement, null).getPropertyValue(`--${varname}`);
@@ -22,12 +18,21 @@ function play(pattern) {
     } else {
         let [head, ...tail] = pattern;
         setTimeout(() => {
+            buttonSounds[head].play();
             blink(head, 500, () => {
                 play(tail);
             });
         }, 100);
     }
 }
+
+// load sounds
+const buttonSounds = {};
+buttonSounds.green  = new Audio("low_e.mp3");
+buttonSounds.red    = new Audio("a.mp3");
+buttonSounds.yellow = new Audio("csharp.mp3");
+buttonSounds.blue   = new Audio("high_e.mp3");
+const gameOverSound = new Audio("low_a.mp3");
 
 // global state for the game
 let gameOn = false; // true iff a game is in progress
@@ -48,13 +53,18 @@ for (let color of colors) {
             attempt.push(color)
             if (attempt[index] !== pattern[index]) {
                 gameOver();
-            } else if (attempt.length === pattern.length) {
-                setTimeout(() => { // add delay before next run
-                    advanceGame();
-                }, 1000);
             } else {
-                index++;
+                buttonSounds[color].play();
+                if (attempt.length === pattern.length) {
+                    setTimeout(() => { // add delay before next run
+                        advanceGame();
+                    }, 1000);
+                } else {
+                    index++;
+                }
             }
+        } else {
+            buttonSounds[color].play();
         }
     });
 }
@@ -82,6 +92,9 @@ function gameOver(n = 3) {
         highScore = Math.max(highScore, pattern.length - 1);
         document.getElementById("highScore").textContent = `high score: ${highScore}`;
         return;
+    }
+    if (n === 3) {
+        gameOverSound.play();
     }
     for (let color of ["green", "red", "yellow"]) {
         blink(color, 100)
